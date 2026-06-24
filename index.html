@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>YIK Mecha Assets | Unity Mecha Asset Studio</title>
+
+  <meta name="description" content="Unity 개발자를 위한 메카닉, 로봇, 드론, SF 차량 에셋 전문 제작 브랜드입니다." />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      background: #070b12;
+      color: #e5edf8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      background: rgba(7, 11, 18, 0.92);
+      border-bottom: 1px solid #1f2937;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #7dd3fc;
+      letter-spacing: 0.5px;
+    }
+
+    .menu a {
+      margin-left: 26px;
+      color: #cbd5e1;
+      font-size: 15px;
+    }
+
+    .menu a:hover {
+      color: #7dd3fc;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 160px 24px 100px;
+      background:
+        linear-gradient(90deg, rgba(7, 11, 18, 0.96), rgba(7, 11, 18, 0.65)),
+        url("images/hero-mecha.jpg");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: auto;
+      width: 100%;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 14px;
+      margin-bottom: 22px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(125, 211, 252, 0.35);
+      color: #7dd3fc;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      max-width: 760px;
+      font-size: 62px;
+      line-height: 1.05;
+      margin: 0 0 24px;
+      color: #f8fafc;
+    }
+
+    .hero p {
+      max-width: 680px;
+      font-size: 21px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 24px;
+      border-radius: 10px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #38bdf8;
+      color: #020617;
+    }
+
+    .btn-primary:hover {
+      background: #7dd3fc;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .btn-secondary:hover {
+      border-color: #7dd3fc;
+      color: #7dd3fc;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 90px 24px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      margin-bottom: 45px;
+    }
+
+    .section-title span {
+      color: #7dd3fc;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin: 12px 0 14px;
+      color: #f8fafc;
+    }
+
+    .section-title p {
+      max-width: 720px;
+      color: #94a3b8;
+      line-height: 1.7;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 18px;
+      overflow: hidden;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: #38bdf8;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .card-img {
+      height: 240px;
+      background: #111827;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-body h3 {
+      margin: 0 0 12px;
+      color: #7dd3fc;
+      font-size: 22px;
+    }
+
+    .card-body p {
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .card-body ul {
+      padding-left: 18px;
+      color: #94a3b8;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .feature-box {
+      padding: 26px;
+      background: linear-gradient(180deg, #111827, #0f172a);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+    }
+
+    .feature-box h3 {
+      color: #f8fafc;
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .feature-box p {
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+    }
+
+    .docs-table th,
+    .docs-table td {
+      padding: 18px 20px;
+      border-bottom: 1px solid #1e293b;
+      text-align: left;
+    }
+
+    .docs-table th {
+      width: 260px;
+      color: #7dd3fc;
+      background: #111827;
+    }
+
+    .docs-table td {
+      color: #cbd5e1;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .portfolio-item {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+      background: #111827;
+    }
+
+    .portfolio-item img {
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 22px;
+      padding: 40px;
+    }
+
+    .about-box p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .contact-box {
+      background:
+        linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(125, 211, 252, 0.35);
+      border-radius: 22px;
+      padding: 42px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 38px;
+      margin-top: 0;
+    }
+
+    .contact-box p {
+      color: #cbd5e1;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 34px 24px;
+      text-align: center;
+      background: #030712;
+      border-top: 1px solid #1e293b;
+      color: #64748b;
+    }
+
+    @media (max-width: 900px) {
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .grid,
+      .features,
+      .portfolio-grid,
+      .about-box {
+        grid-template-columns: 1fr;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .docs-table th,
+      .docs-table td {
+        display: block;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">YIK Mecha Assets</div>
+
+    <nav class="menu">
+      <a href="#assets">Assets</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#features">Features</a>
+      <a href="#docs">Docs</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="tag">UNITY READY MECHA ASSETS</div>
+
+    <h1>Premium Mecha Assets for Unity Developers</h1>
+
+    <p>
+      유니티 게임 개발자를 위한 메카닉, 로봇, 드론, 터렛, SF 차량,
+      보스 메카닉 에셋을 제작합니다. 게임에 바로 사용할 수 있는
+      프리팹, 텍스처, 머티리얼, 데모 씬 중심으로 구성합니다.
+    </p>
+
+    <div class="buttons">
+      <a class="btn btn-primary" href="#assets">View Asset Packs</a>
+      <a class="btn btn-secondary" href="#contact">Contact Us</a>
+    </div>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="container">
+    <div class="section-title">
+      <span>Asset Store Products</span>
+      <h2>Featured Asset Packs</h2>
+      <p>
+        Unity Asset Store 판매를 목표로 제작하는 메카닉 전문 에셋 패키지입니다.
+        방치형 RPG, 슈팅, 타워디펜스, SF 액션 게임에 활용할 수 있습니다.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <img class="card-img" src="images/mecha-drone-pack.jpg" alt="Mecha Drone Starter Pack">
+        <div class="card-body">
+          <h3>Mecha Drone Starter Pack</h3>
+          <p>드론, 터렛, 미사일, 레이저 무기로 구성된 입문용 SF 메카닉 팩.</p>
+          <ul>
+            <li>Drone 5 Types</li>
+            <li>Turret 3 Types</li>
+            <li>Prefab Included</li>
+            <li>Demo Scene Included</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <img class="card-img" src="images/boss-mecha-pack.jpg" alt="Boss Mecha Pack">
+        <div class="card-body">
+          <h3>Boss Mecha Pack</h3>
+          <p>보스전에 사용할 수 있는 대형 메카닉 몬스터 에셋 패키지.</p>
+          <ul>
+            <li>Large Boss Mechs</li>
+            <li>Separated Weapon Parts</li>
+            <li>Attack Animation Ready</li>
+            <li>Optimized for Games</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <img class="card-img" src="images/modular-robot-pack.jpg" alt="Modular Robot Parts Pack">
+        <div class="card-body">
+          <h3>Modular Robot Parts Pack</h3>
+          <p>머리, 몸통, 팔, 다리, 무기를 조합할 수 있는 모듈형 로봇 파츠 팩.</p>
+          <ul>
+            <li>Head / Body / Arm / Leg Parts</li>
+            <li>Weapon Attachments</li>
+            <li>Color Variations</li>
+            <li>Customizable Design</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-title">
+      <span>Portfolio</span>
+      <h2>Mecha Production Showcase</h2>
+      <p>
+        원화, 모델링용 시트, Unity 적용 화면, 텍스처 샘플을 보여주는 공간입니다.
+      </p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="images/portfolio-01.jpg" alt="Mecha Concept Sheet">
+      </div>
+
+      <div class="portfolio-item">
+        <img src="images/portfolio-02.jpg" alt="Robot Turnaround">
+      </div>
+
+      <div class="portfolio-item">
+        <img src="images/portfolio-03.jpg" alt="Drone Asset">
+      </div>
+
+      <div class="portfolio-item">
+        <img src="images/portfolio-04.jpg" alt="Unity Screenshot">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <div class="section-title">
+      <span>Production Features</span>
+      <h2>Built for Real Game Projects</h2>
+      <p>
+        단순 이미지가 아니라 Unity 프로젝트에 바로 적용하기 쉬운 구조를 목표로 제작합니다.
+      </p>
+    </div>
+
+    <div class="features">
+      <div class="feature-box">
+        <h3>Unity Ready</h3>
+        <p>Prefab, Material, Texture, Demo Scene을 정리해 바로 테스트할 수 있게 구성합니다.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Game Optimized</h3>
+        <p>모바일과 PC 환경을 고려해 폴리곤 수와 텍스처 구성을 최적화합니다.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Modular Design</h3>
+        <p>무기, 장갑, 파츠 교체가 쉬운 메카닉 구조를 지향합니다.</p>
+      </div>
+
+      <div class="feature-box">
+        <h3>Clean Documentation</h3>
+        <p>구매자가 바로 사용할 수 있도록 구성 설명과 사용 방법을 문서화합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="container">
+    <div class="section-title">
+      <span>Documentation</span>
+      <h2>Asset Specifications</h2>
+      <p>
+        Unity Asset Store 구매자가 확인하고 싶어 하는 핵심 정보를 정리하는 영역입니다.
+      </p>
+    </div>
+
+    <table class="docs-table">
+      <tr>
+        <th>Unity Version</th>
+        <td>Unity 2022.3 LTS or higher</td>
+      </tr>
+
+      <tr>
+        <th>Render Pipeline</th>
+        <td>Built-in / URP Support</td>
+      </tr>
+
+      <tr>
+        <th>Texture Size</th>
+        <td>1024x1024 / 2048x2048 PNG or TGA</td>
+      </tr>
+
+      <tr>
+        <th>File Format</th>
+        <td>FBX, PNG, Prefab, Material, Unity Scene</td>
+      </tr>
+
+      <tr>
+        <th>Animation</th>
+        <td>Idle, Move, Attack, Hit, Death</td>
+      </tr>
+
+      <tr>
+        <th>Demo Scene</th>
+        <td>Included</td>
+      </tr>
+
+      <tr>
+        <th>Commercial Use</th>
+        <td>Allowed according to Unity Asset Store license</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-box">
+      <div>
+        <div class="section-title">
+          <span>About Studio</span>
+          <h2>YIK Mecha Assets</h2>
+        </div>
+
+        <p>
+          YIK Mecha Assets는 Unity 개발자를 위한 메카닉 전문 에셋 제작 브랜드입니다.
+          로봇, 드론, 터렛, SF 차량, 보스 메카닉, 모듈형 기계 파츠를 중심으로
+          실시간 게임 제작에 바로 사용할 수 있는 에셋을 제작합니다.
+        </p>
+
+        <p>
+          캐릭터 원화, 3D 모델링용 시트, 텍스처 디자인, Unity 프리팹 구성을 함께 고려하여
+          인디 개발자와 소규모 팀이 빠르게 게임에 적용할 수 있는 에셋을 목표로 합니다.
+        </p>
+      </div>
+
+      <div>
+        <img src="images/about-mecha.jpg" alt="About YIK Mecha Assets">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <h2>Need Custom Mecha Assets?</h2>
+
+      <p>
+        커스텀 메카닉 에셋 제작, Unity Asset Store 상품 문의,
+        협업 제안은 아래 이메일로 연락해주세요.
+      </p>
+
+      <p>
+        <strong>Email:</strong> your-email@example.com
+      </p>
+
+      <div class="buttons" style="justify-content:center; margin-top:28px;">
+        <a class="btn btn-primary" href="mailto:your-email@example.com">Send Email</a>
+        <a class="btn btn-secondary" href="#">Unity Asset Store Coming Soon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 YIK Mecha Assets. All rights reserved.
+</footer>
+
+</body>
+</html>
